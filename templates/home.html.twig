@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Jazz Standards Guide</h1>
+
+    {% for standard in standards %}
+        {{ standard.name }}
+    {% endfor %}
+
+{% endblock %}
