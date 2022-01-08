@@ -17,6 +17,7 @@
                     <i class="bi-arrow-up-circle"></i>
                 </a>
             </th>
+            <th>Range</th>
             <th>Play along</th>
             <th>Tabs</th>
         </tr>
@@ -34,6 +35,7 @@
                 </td>
                 <td>{{ standard.interpreter }}</td>
                 <td>{{ standard.tempo }}</td>
+                <td>{{ calculate_range(standard) }}</td>
                 <td>
                     <a class="spotify-track" target="_blank" href="{{ standard.track }}">
                         <i class="bi-spotify"></i>
