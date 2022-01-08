@@ -14,7 +14,7 @@ class QuickReferenceReader
     /**
      * Número de campos que contiene cada línea de la guía.
      */
-    const NUM_REF_FIELDS = 3;
+    const NUM_REF_FIELDS = 5;
 
     /**
      * @var string
@@ -51,13 +51,20 @@ class QuickReferenceReader
         $line = $this->clean($line);
         $data = explode(';', $line);
 
-        if ($data === false || count($data) != self::NUM_REF_FIELDS) {
+        if ($data === false) {
             return null;
         }
 
-        return new JazzStandard(
-            $data[0], $data[1], $data[2]
-        );
+        if (count($data) != self::NUM_REF_FIELDS) {
+            throw new \Exception(
+                sprintf("Quick reference item must have exactly %d fields, %d fields found",
+                    self::NUM_REF_FIELDS,
+                    count($data)
+                )
+            );
+        }
+
+        return new JazzStandard(...$data);
     }
 
     private function clean(string $line): string
