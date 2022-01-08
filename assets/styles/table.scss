@@ -16,6 +16,25 @@ TABLE FILTERS
 
 .filters {
   padding-bottom: 2rem;
+
+  .search-input {
+    position: relative;
+
+    input {
+      padding-right: 1.5em;
+    }
+
+    i {
+      position: absolute;
+      right: 12px;
+      top: 6%;
+      font-size: 1.5em;
+    }
+
+    i:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 /**********

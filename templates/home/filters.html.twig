@@ -1,12 +1,19 @@
 <div data-controller="filter" class="filters">
     <form class="d-flex search-form">
-        <input class="form-control shadow-none me-2"
-               type="text"
-               placeholder="Search"
-               aria-label="Search">
+
+        <div class="d-flex search-input">
+            <input class="form-control shadow-none me-2"
+                   type="text"
+                   data-action="keyup->filter#showClearIcon"
+                   placeholder="Search"
+                   aria-label="Search">
+            <i class="visually-hidden bi-x" data-action="click->filter#clearSearchText"></i>
+        </div>
+
         <button class="btn btn-outline-secondary shadow-none"
                 type="submit"
                 data-action="click->filter#search"
         >Search</button>
+
     </form>
 </div>

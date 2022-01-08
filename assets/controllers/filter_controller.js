@@ -26,4 +26,24 @@ export default class extends Controller {
 
         return search;
     }
+
+    showClearIcon(event) {
+        const input = $(event.currentTarget);
+        const clearIcon = input.parent().children('i');
+
+        if (input.val() != '') {
+            clearIcon.removeClass('visually-hidden');
+        } else {
+            clearIcon.addClass('visually-hidden');
+        }
+    }
+
+    clearSearchText(event) {
+        const clearIcon = $(event.currentTarget);
+        const input = clearIcon.parent().children('input');
+
+        input.val('');
+        clearIcon.addClass('visually-hidden');
+        this.search();
+    }
 }
