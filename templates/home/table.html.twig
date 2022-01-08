@@ -2,7 +2,6 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Authors</th>
             <th>Interpreter</th>
             <th data-controller="order">Tempo
                 <a data-action="click->order#order"
@@ -26,11 +25,13 @@
         {% for standard in standards %}
             <tr data-tempo="{{ standard.tempo }}"
                 data-name="{{ standard.name }}"
-                data-authors="{{ standard.authors|join(', ') }}"
                 data-interpreter="{{ standard.interpreter }}"
             >
-                <td>{{ standard.name }}</td>
-                <td>{{ standard.authors|join(', ') }}</td>
+                <td>{{ standard.name }}
+                    <a class="info-link" href="#" data-bs-toggle="modal" data-bs-target="{{ "#modal" ~ standard.id }}">
+                        <i class="bi-info-circle"></i>
+                    </a>
+                </td>
                 <td>{{ standard.interpreter }}</td>
                 <td>{{ standard.tempo }}</td>
                 <td>

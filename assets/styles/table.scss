@@ -6,8 +6,18 @@ TABLE ROWS
   color: $spotify-color;
 }
 
-.tab-link {
+.tab-link, .info-link {
   color: $base-color;
+}
+
+.info-link:hover {
+  i {
+    color: $base-color;
+  }
+
+  i.bi-info-circle:before {
+    content: "\f430";
+  }
 }
 
 /************
@@ -46,11 +56,15 @@ TABLE SORTS
   color: $base-color;
 }
 
-.standards-table-order.active {
-  .bi-arrow-down-circle::before {
+.standards-table-order.active, .standards-table-order:hover {
+  i {
+    color: $base-color;
+  }
+
+  i.bi-arrow-down-circle::before {
     content: "\f118";
   }
-  .bi-arrow-up-circle::before {
+  i.bi-arrow-up-circle::before {
     content: "\f139";
   }
 }
