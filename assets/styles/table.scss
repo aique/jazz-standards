@@ -14,6 +14,14 @@ TABLE ROWS
 TABLE FILTERS
 *************/
 
+.filters {
+  padding-bottom: 2rem;
+}
+
+/**********
+TABLE SORTS
+***********/
+
 .standards-table-order {
   padding: 0 .1em;
   color: $base-color;

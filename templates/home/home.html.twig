@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Jazz Standards Guide</h1>
+        </div>
+        {% include 'home/filters.html.twig' %}
+        {% include 'home/table.html.twig' %}
+    </div>
+
+{% endblock %}

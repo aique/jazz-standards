@@ -1,0 +1,49 @@
+<table class="main-table table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Authors</th>
+            <th>Interpreter</th>
+            <th data-controller="order">Tempo
+                <a data-action="click->order#order"
+                   data-order="desc"
+                   class="standards-table-order"
+                   href="#">
+                    <i class="bi-arrow-down-circle"></i>
+                </a>
+                <a data-action="click->order#order"
+                   data-order="asc"
+                   class="standards-table-order"
+                   href="#">
+                    <i class="bi-arrow-up-circle"></i>
+                </a>
+            </th>
+            <th>Play along</th>
+            <th>Tabs</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for standard in standards %}
+            <tr data-tempo="{{ standard.tempo }}"
+                data-name="{{ standard.name }}"
+                data-authors="{{ standard.authors|join(', ') }}"
+                data-interpreter="{{ standard.interpreter }}"
+            >
+                <td>{{ standard.name }}</td>
+                <td>{{ standard.authors|join(', ') }}</td>
+                <td>{{ standard.interpreter }}</td>
+                <td>{{ standard.tempo }}</td>
+                <td>
+                    <a class="spotify-track" target="_blank" href="{{ standard.track }}">
+                        <i class="bi-spotify"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="tab-link" href="{{ tab_href(standard.name) }}" target="_blank">
+                        <i class="bi-music-note-beamed"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

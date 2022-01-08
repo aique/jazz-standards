@@ -33,6 +33,6 @@ class AppController extends AbstractController
             'standards' => $standards,
         ];
 
-        return $this->render('home.html.twig', $parameters);
+        return $this->render('home/home.html.twig', $parameters);
     }
 }
