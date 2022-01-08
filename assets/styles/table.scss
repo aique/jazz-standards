@@ -1,0 +1,13 @@
+.standards-table-order {
+  padding: 0 .1em;
+  color: $base-color;
+}
+
+.standards-table-order.active {
+  .bi-arrow-down-circle::before {
+    content: "\f118";
+  }
+  .bi-arrow-up-circle::before {
+    content: "\f139";
+  }
+}

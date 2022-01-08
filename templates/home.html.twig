@@ -2,10 +2,40 @@
 
 {% block body %}
 
-    <h1>Jazz Standards Guide</h1>
+    <div class="container">
+        <h1>Jazz Standards Guide</h1>
 
-    {% for standard in standards %}
-        {{ standard.name }}
-    {% endfor %}
+        <table class="main-table table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th data-controller="order">Tempo
+                    <a data-action="click->order#order"
+                       data-order="desc"
+                       class="standards-table-order"
+                       href="#">
+                        <i class="bi-arrow-down-circle"></i>
+                    </a>
+                    <a data-action="click->order#order"
+                       data-order="asc"
+                       class="standards-table-order"
+                       href="#">
+                        <i class="bi-arrow-up-circle"></i>
+                    </a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for standard in standards %}
+                <tr data-tempo="{{ standard.tempo }}">
+                    <td>{{ standard.name }}</td>
+                    <td>{{ standard.author }}</td>
+                    <td>{{ standard.tempo }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

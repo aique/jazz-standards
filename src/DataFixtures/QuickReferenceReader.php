@@ -48,6 +48,7 @@ class QuickReferenceReader
             return null;
         }
 
+        $line = $this->clean($line);
         $data = explode(';', $line);
 
         if ($data === false || count($data) != self::NUM_REF_FIELDS) {
@@ -57,5 +58,10 @@ class QuickReferenceReader
         return new JazzStandard(
             $data[0], $data[1], $data[2]
         );
+    }
+
+    private function clean(string $line): string
+    {
+        return str_replace("\n", '', $line);
     }
 }
