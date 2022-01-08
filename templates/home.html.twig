@@ -26,6 +26,7 @@
                     </a>
                 </th>
                 <th>Play along</th>
+                <th>Tabs</th>
             </tr>
             </thead>
             <tbody>
@@ -38,6 +39,11 @@
                     <td>
                         <a class="spotify-track" target="_blank" href="{{ standard.track }}">
                             <i class="bi-spotify"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="tab-link" href="{{ tab_href(standard.name) }}" target="_blank">
+                            <i class="bi-music-note-beamed"></i>
                         </a>
                     </td>
                 </tr>
