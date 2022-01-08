@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Tests\Twig;
+namespace App\Tests\Render;
 
 use App\Entity\JazzStandard;
+use App\Entity\TempoRange;
 use App\Tempo\RangeCalculator;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -27,7 +28,7 @@ class RangeCalculatorTest extends KernelTestCase
         );
 
         $this->assertEquals(
-            RangeCalculator::MEDIUM,
+            TempoRange::MEDIUM,
             $this->rangeCalculator->calculateRange(
                 $standard
             )
@@ -38,7 +39,7 @@ class RangeCalculatorTest extends KernelTestCase
         );
 
         $this->assertEquals(
-            RangeCalculator::UP,
+            TempoRange::UP,
             $this->rangeCalculator->calculateRange(
                 $standard
             )
@@ -49,7 +50,7 @@ class RangeCalculatorTest extends KernelTestCase
         );
 
         $this->assertEquals(
-            RangeCalculator::BALLAD,
+            TempoRange::BALLAD,
             $this->rangeCalculator->calculateRange(
                 $standard
             )

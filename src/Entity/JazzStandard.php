@@ -32,7 +32,7 @@ class JazzStandard
     private $interpreter;
 
     /**
-     * @ORM\Column(type="string", length=9)
+     * @ORM\Column(type="smallint")
      */
     private $tempo;
 

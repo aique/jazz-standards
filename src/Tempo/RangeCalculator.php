@@ -3,27 +3,29 @@
 namespace App\Tempo;
 
 use App\Entity\JazzStandard;
+use App\Entity\TempoRange;
+use App\Repository\TempoRangeRepository;
 
 class RangeCalculator
 {
-    const BALLAD = 'Ballad';
-    const MEDIUM = 'Medium';
-    const UP = 'Up';
+    /**
+     * @var TempoRangeRepository
+     */
+    private $repository;
 
-    const RANGES = [
-        self::BALLAD,
-        self::MEDIUM,
-        self::UP,
-    ];
-
-    public function calculateRange(JazzStandard $standard): string
+    public function __construct(TempoRangeRepository $repository)
     {
-        if ($standard->getTempo() <= 85) {
-            return self::BALLAD;
-        } else if ($standard->getTempo() >= 245) {
-            return self::UP;
+        $this->repository = $repository;
+    }
+
+    public function calculateRange(JazzStandard $standard): ?string
+    {
+        $range = $this->repository->getRangeByTempo($standard->getTempo());
+
+        if ($range instanceof TempoRange) {
+            return $range->getName();
         }
 
-        return self::MEDIUM;
+        return null;
     }
 }

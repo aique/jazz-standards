@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Twig;
+namespace App\Tests\Render;
 
 use App\Render\JazzStandardsTable\LinkGenerator;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
