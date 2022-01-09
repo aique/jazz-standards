@@ -30,8 +30,8 @@
     <tbody>
         {% for standard in standards %}
             <tr data-tempo="{{ standard.tempo }}"
-                data-name="{{ standard.name }}"
-                data-interpreter="{{ standard.interpreter }}"
+                data-range="{{ calculate_range(standard)|lower }}"
+                data-name="{{ standard.name|lower }}"
             >
                 <td>{{ standard.name }}
                     <a class="info-link" href="#" data-bs-toggle="modal" data-bs-target="{{ "#modal" ~ standard.id }}">

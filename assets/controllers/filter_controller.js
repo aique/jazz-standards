@@ -3,21 +3,7 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     search() {
-        const search = this.getSearchValue();
-        let rows = this.getRows();
-
-        for (let i = 0 ; i < rows.length ; i++) {
-            const current = $(rows[i]);
-            current.hide();
-
-            if (current.attr('data-name').toLowerCase().includes(search)) {
-                current.show();
-            }
-        }
-    }
-
-    getRows() {
-        return $('.main-table tbody tr');
+        this.show('data-name', this.getSearchValue())
     }
 
     getSearchValue() {
@@ -25,6 +11,26 @@ export default class extends Controller {
         search = search.toLowerCase();
 
         return search;
+    }
+
+    filterByRange() {
+        this.show(
+            'data-range',
+            $(event.currentTarget).children('option:selected').val()
+        );
+    }
+
+    show(attrName, value) {
+        let rows = $('.main-table tbody tr');
+
+        for (let i = 0 ; i < rows.length ; i++) {
+            const current = $(rows[i]);
+            current.hide();
+
+            if (current.attr(attrName).includes(value)) {
+                current.show();
+            }
+        }
     }
 
     showClearIcon(event) {
