@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Twig;
+namespace App\Twig\Render;
 
 use App\Render\JazzStandardsTable\LinkGenerator;
 use Twig\Extension\AbstractExtension;

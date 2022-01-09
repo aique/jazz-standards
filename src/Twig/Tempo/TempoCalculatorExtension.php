@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Twig;
+namespace App\Twig\Tempo;
 
 use App\Tempo\RangeCalculator;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class TempoExtension extends AbstractExtension
+class TempoCalculatorExtension extends AbstractExtension
 {
     /**
      * @var RangeCalculator
@@ -21,7 +21,7 @@ class TempoExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('calculate_range', [$this->rangeCalculator, 'calculateRange'])
+            new TwigFunction('calculate_range', [$this->rangeCalculator, 'calculateRange']),
         ];
     }
 }

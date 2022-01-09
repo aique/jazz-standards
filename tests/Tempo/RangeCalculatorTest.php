@@ -23,37 +23,60 @@ class RangeCalculatorTest extends KernelTestCase
 
     public function testGetSearchFormatted()
     {
-        $standard = new JazzStandard(
-          '', '', '', '145', ''
-        );
-
         $this->assertEquals(
-            TempoRange::MEDIUM,
+            TempoRange::BALLAD,
             $this->rangeCalculator->calculateRange(
-                $standard
+                $this->createJazzStandard('65')
             )
-        );
-
-        $standard = new JazzStandard(
-            '', '', '', '275', ''
-        );
-
-        $this->assertEquals(
-            TempoRange::UP,
-            $this->rangeCalculator->calculateRange(
-                $standard
-            )
-        );
-
-        $standard = new JazzStandard(
-            '', '', '', '65', ''
         );
 
         $this->assertEquals(
             TempoRange::BALLAD,
             $this->rangeCalculator->calculateRange(
-                $standard
+                $this->createJazzStandard('85')
             )
+        );
+
+        $this->assertEquals(
+            TempoRange::MEDIUM,
+            $this->rangeCalculator->calculateRange(
+                $this->createJazzStandard('86')
+            )
+        );
+
+        $this->assertEquals(
+            TempoRange::MEDIUM,
+            $this->rangeCalculator->calculateRange(
+                $this->createJazzStandard('145')
+            )
+        );
+
+        $this->assertEquals(
+            TempoRange::MEDIUM,
+            $this->rangeCalculator->calculateRange(
+                $this->createJazzStandard('245')
+            )
+        );
+
+        $this->assertEquals(
+            TempoRange::UP,
+            $this->rangeCalculator->calculateRange(
+                $this->createJazzStandard('246')
+            )
+        );
+
+        $this->assertEquals(
+            TempoRange::UP,
+            $this->rangeCalculator->calculateRange(
+                $this->createJazzStandard('315')
+            )
+        );
+    }
+
+    private function createJazzStandard(string $tempo): JazzStandard
+    {
+        return new JazzStandard(
+            '', '', '', $tempo, ''
         );
     }
 }
