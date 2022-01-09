@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass=App\Repository\JazzStandardRepository::class)
  */
 class JazzStandard
 {
@@ -27,6 +27,11 @@ class JazzStandard
     private $authors;
 
     /**
+     * @ORM\Column(type="simple_array")
+     */
+    private $genres;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $interpreter;
@@ -44,12 +49,14 @@ class JazzStandard
     public function __construct(
         string $name,
         string $authors,
+        string $genres,
         string $interpreter,
         string $tempo,
         string $track
     ) {
         $this->name = $name;
         $this->authors = explode(',', $authors);
+        $this->genres = explode(',', $genres);
         $this->interpreter = $interpreter;
         $this->tempo = $tempo;
         $this->track = $track;
@@ -68,6 +75,11 @@ class JazzStandard
     public function getAuthors(): array
     {
         return $this->authors;
+    }
+
+    public function getGenres(): array
+    {
+        return $this->genres;
     }
 
     public function getInterpreter(): string

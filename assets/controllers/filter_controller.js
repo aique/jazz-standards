@@ -20,6 +20,13 @@ export default class extends Controller {
         );
     }
 
+    filterByGenre() {
+        this.show(
+            'data-genres',
+            $(event.currentTarget).children('option:selected').val()
+        );
+    }
+
     show(attrName, value) {
         let rows = $('.main-table tbody tr');
 

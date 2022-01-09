@@ -14,7 +14,7 @@ class QuickReferenceReader
     /**
      * Número de campos que contiene cada línea de la guía.
      */
-    const NUM_REF_FIELDS = 5;
+    const NUM_REF_FIELDS = 6;
 
     /**
      * @var string

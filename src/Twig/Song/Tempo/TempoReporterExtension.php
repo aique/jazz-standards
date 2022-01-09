@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Twig\Tempo;
+namespace App\Twig\Song\Tempo;
 
-use App\Tempo\RangeReporter;
+use App\Song\Tempo\RangeReporter;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Twig\Tempo;
+namespace App\Twig\Song\Tempo;
 
-use App\Tempo\RangeCalculator;
+use App\Song\Tempo\RangeCalculator;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Interpreter</th>
+            <th>Genres</th>
             <th data-controller="order">Tempo
                 <a data-action="click->order#order"
                    data-order="desc"
@@ -31,6 +31,7 @@
         {% for standard in standards %}
             <tr data-tempo="{{ standard.tempo }}"
                 data-range="{{ calculate_range(standard)|lower }}"
+                data-genres="{{ standard.genres|join(',')|lower }}"
                 data-name="{{ standard.name|lower }}"
             >
                 <td>{{ standard.name }}
@@ -38,7 +39,7 @@
                         <i class="bi-info-circle"></i>
                     </a>
                 </td>
-                <td>{{ standard.interpreter }}</td>
+                <td>{{ standard.genres|join(' / ') }}</td>
                 <td>{{ standard.tempo }}</td>
                 <td>{{ calculate_range(standard) }}</td>
                 <td>

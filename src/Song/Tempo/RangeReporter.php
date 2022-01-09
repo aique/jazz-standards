@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tempo;
+namespace App\Song\Tempo;
 
 use App\Entity\TempoRange;
 use App\Repository\TempoRangeRepository;
