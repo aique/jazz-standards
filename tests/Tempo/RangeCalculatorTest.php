@@ -4,7 +4,7 @@ namespace App\Tests\Render;
 
 use App\Entity\JazzStandard;
 use App\Entity\TempoRange;
-use App\Tempo\RangeCalculator;
+use App\Song\Tempo\RangeCalculator;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class RangeCalculatorTest extends KernelTestCase
@@ -76,7 +76,7 @@ class RangeCalculatorTest extends KernelTestCase
     private function createJazzStandard(string $tempo): JazzStandard
     {
         return new JazzStandard(
-            '', '', '', $tempo, ''
+            '', '', '', '', $tempo, ''
         );
     }
 }

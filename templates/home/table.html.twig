@@ -30,7 +30,7 @@
     <tbody>
         {% for standard in standards %}
             <tr data-tempo="{{ standard.tempo }}"
-                data-range="{{ calculate_range(standard)|lower }}"
+                data-range="{{ calculate_range(standard, ranges)|lower }}"
                 data-genres="{{ standard.genres|join(',')|lower }}"
                 data-name="{{ standard.name|lower }}"
             >
@@ -41,7 +41,7 @@
                 </td>
                 <td>{{ standard.genres|join(' / ') }}</td>
                 <td>{{ standard.tempo }}</td>
-                <td>{{ calculate_range(standard) }}</td>
+                <td>{{ calculate_range(standard, ranges) }}</td>
                 <td>
                     <a class="spotify-track" target="_blank" href="{{ standard.track }}">
                         <i class="bi-spotify"></i>

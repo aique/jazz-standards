@@ -14,11 +14,13 @@ class RangeReporter
         $this->repository = $repository;
     }
 
-    public function report(): string
+    public function report(array $ranges = []): string
     {
         $report = '';
 
-        $ranges = $this->repository->findAll();
+        if (empty($ranges)) {
+            $ranges = $this->repository->findAll();
+        }
 
         foreach ($ranges as $range) {
             if (!$range instanceof TempoRange) {

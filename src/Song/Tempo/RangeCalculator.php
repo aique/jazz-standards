@@ -13,23 +13,18 @@ class RangeCalculator
      */
     private $repository;
 
-    /**
-     * @var array
-     */
-    private $ranges;
-
     public function __construct(TempoRangeRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function calculateRange(JazzStandard $standard): ?string
+    public function calculateRange(JazzStandard $standard, array $ranges = []): ?string
     {
-        if (empty($this->ranges)) {
-            $this->ranges = $this->repository->findAll();
+        if (empty($ranges)) {
+            $ranges = $this->repository->findAll();
         }
 
-        foreach ($this->ranges as $range) {
+        foreach ($ranges as $range) {
             if (!$range instanceof TempoRange) {
                 continue;
             }
