@@ -59,4 +59,9 @@ class TempoRange
     {
         return $this->end;
     }
+    
+    public function intoRange(int $tempo): bool
+    {
+        return $this->start <= $tempo && ($this->end > $tempo || empty($this->end));
+    }
 }
