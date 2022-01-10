@@ -3,7 +3,10 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     search() {
-        this.show('data-name', this.getSearchValue())
+        this.doSearch(
+            'data-name',
+            this.getSearchValue()
+        );
     }
 
     getSearchValue() {
@@ -14,21 +17,26 @@ export default class extends Controller {
     }
 
     filterByRange() {
-        this.show(
+        this.doFilter(
             'data-range',
             $(event.currentTarget).children('option:selected').val()
         );
     }
 
     filterByGenre() {
-        this.show(
+        this.doSearch(
             'data-genres',
             $(event.currentTarget).children('option:selected').val()
         );
     }
 
-    show(attrName, value) {
+    doSearch(attrName, value) {
         let rows = $('.main-table tbody tr');
+
+        if (value === '') {
+            this.showAll(rows);
+            return;
+        }
 
         for (let i = 0 ; i < rows.length ; i++) {
             const current = $(rows[i]);
@@ -37,6 +45,30 @@ export default class extends Controller {
             if (current.attr(attrName).includes(value)) {
                 current.show();
             }
+        }
+    }
+
+    doFilter(attrName, value) {
+        let rows = $('.main-table tbody tr');
+
+        if (value === '') {
+            this.showAll(rows);
+            return;
+        }
+
+        for (let i = 0 ; i < rows.length ; i++) {
+            const current = $(rows[i]);
+            current.hide();
+
+            if (current.attr(attrName) === value) {
+                current.show();
+            }
+        }
+    }
+
+    showAll(rows) {
+        for (let i = 0 ; i < rows.length ; i++) {
+            $(rows[i]).show();
         }
     }
 

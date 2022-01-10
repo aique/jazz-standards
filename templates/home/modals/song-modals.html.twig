@@ -24,10 +24,12 @@
                     <p>{{ standard.interpreter }}</p>
                     <h6>Tempo</h6>
                     <p>{{ standard.tempo }}</p>
+                    <h6>Range</h6>
+                    <p>{{ calculate_range(standard, ranges) }}</p>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary shadow-none" data-bs-dismiss="modal">Close</button>
                 </div>
 
             </div>

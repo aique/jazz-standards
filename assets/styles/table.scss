@@ -2,7 +2,7 @@
 TABLE ROWS
 ************/
 
-.spotify-track {
+.spotify-track, .spotify-track:hover {
   color: $spotify-color;
 }
 
@@ -10,11 +10,13 @@ TABLE ROWS
   color: $base-color;
 }
 
-.info-link:hover {
+.tab-link:hover, .info-link:hover {
   i {
     color: $base-color;
   }
+}
 
+.info-link:hover {
   i.bi-info-circle:before {
     content: "\f430";
   }

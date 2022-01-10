@@ -10,7 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 class TempoRange
 {
     const BALLAD = 'Ballad';
+    const SLOW_MEDIUM = 'Slow medium';
     const MEDIUM = 'Medium';
+    const FAST_MEDIUM = 'Fast medium';
     const UP = 'Up';
 
     /**

@@ -14,8 +14,16 @@ class TempoRangesFixtures extends Fixture
             TempoRange::BALLAD, 0, 85
         );
 
+        $slowMediumRange = new TempoRange(
+            TempoRange::SLOW_MEDIUM, 86, 138
+        );
+
         $mediumRange = new TempoRange(
-            TempoRange::MEDIUM, 86, 245
+            TempoRange::MEDIUM, 139, 191
+        );
+
+        $fastMediumRange = new TempoRange(
+            TempoRange::FAST_MEDIUM, 192, 245
         );
 
         $upRange = new TempoRange(
@@ -23,7 +31,9 @@ class TempoRangesFixtures extends Fixture
         );
 
         $manager->persist($balladRange);
+        $manager->persist($slowMediumRange);
         $manager->persist($mediumRange);
+        $manager->persist($fastMediumRange);
         $manager->persist($upRange);
 
         $manager->flush();
