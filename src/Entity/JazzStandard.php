@@ -32,6 +32,11 @@ class JazzStandard
     private $genres;
 
     /**
+     * @ORM\Column(type="string", length=55)
+     */
+    private $form;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $interpreter;
@@ -50,6 +55,7 @@ class JazzStandard
         string $name,
         string $authors,
         string $genres,
+        string $form,
         string $interpreter,
         string $tempo,
         string $track
@@ -57,6 +63,7 @@ class JazzStandard
         $this->name = $name;
         $this->authors = explode(',', $authors);
         $this->genres = explode(',', $genres);
+        $this->form = $form;
         $this->interpreter = $interpreter;
         $this->tempo = $tempo;
         $this->track = $track;
@@ -80,6 +87,11 @@ class JazzStandard
     public function getGenres(): array
     {
         return $this->genres;
+    }
+
+    public function getForm(): string
+    {
+        return $this->form;
     }
 
     public function getInterpreter(): string

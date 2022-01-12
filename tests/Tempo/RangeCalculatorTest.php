@@ -38,7 +38,7 @@ class RangeCalculatorTest extends KernelTestCase
         );
 
         $this->assertEquals(
-            TempoRange::MEDIUM,
+            TempoRange::SLOW_MEDIUM,
             $this->rangeCalculator->calculateRange(
                 $this->createJazzStandard('86')
             )
@@ -52,7 +52,7 @@ class RangeCalculatorTest extends KernelTestCase
         );
 
         $this->assertEquals(
-            TempoRange::MEDIUM,
+            TempoRange::FAST_MEDIUM,
             $this->rangeCalculator->calculateRange(
                 $this->createJazzStandard('245')
             )
@@ -76,7 +76,7 @@ class RangeCalculatorTest extends KernelTestCase
     private function createJazzStandard(string $tempo): JazzStandard
     {
         return new JazzStandard(
-            '', '', '', '', $tempo, ''
+            '', '', '', '', '', $tempo, ''
         );
     }
 }

@@ -39,8 +39,10 @@ TABLE FILTERS
     i {
       position: absolute;
       right: 12px;
-      top: 6%;
       font-size: 1.5em;
+
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     i:hover {

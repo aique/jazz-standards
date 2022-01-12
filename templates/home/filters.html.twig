@@ -1,5 +1,5 @@
-<div data-controller="filter" class="d-flex filters">
-    <form class="d-flex search-form">
+<div data-controller="filter" class="filters d-lg-flex">
+    <form class="d-flex h-50 align-self-end search-form">
         <div class="d-flex search-input">
             <input class="form-control shadow-none me-2"
                    type="text"
@@ -14,38 +14,42 @@
         >Search</button>
     </form>
 
-    <form class="d-flex ms-auto me-4">
-        <label class="col-form-label me-2" for="genre-filter">Genre</label>
-        <select class="form-select shadow-none"
-                id="genre-filter"
-                name="genre-filter"
-                data-action="change->filter#filterByGenre"
-                aria-label="Genre"
-        >
-            <option value="" selected>Any</option>
-            {% for genre in genres %}
-                <option value="{{ genre|lower }}">{{ genre }}</option>
-            {% endfor %}
-        </select>
-    </form>
+    <div class="d-flex ms-lg-auto">
 
-    <form class="d-flex me-2">
-        <div class="col-form-label me-2 d-flex">
-            <label class="me-2" for="range-filter">Range</label>
-            <a class="info-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-tempo-ranges">
-                <i class="bi-info-circle"></i>
-            </a>
-        </div>
-        <select class="form-select shadow-none"
-                id="range-filter"
-                name="range-filter"
-                data-action="change->filter#filterByRange"
-                aria-label="Range"
-        >
-            <option value="" selected>Any</option>
-            {% for range in ranges %}
-                <option value="{{ range.name|lower }}">{{ range.name }}</option>
-            {% endfor %}
-        </select>
-    </form>
+        <form class="me-4">
+            <label class="col-form-label me-2" for="genre-filter">Genre</label>
+            <select class="form-select shadow-none"
+                    id="genre-filter"
+                    name="genre-filter"
+                    data-action="change->filter#filterByGenre"
+                    aria-label="Genre"
+            >
+                <option value="" selected>Any</option>
+                {% for genre in genres %}
+                    <option value="{{ genre|lower }}">{{ genre }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <form class="">
+            <div class="col-form-label me-2 d-flex">
+                <label class="me-2" for="range-filter">Range</label>
+                <a class="info-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-tempo-ranges">
+                    <i class="bi-info-circle"></i>
+                </a>
+            </div>
+            <select class="form-select shadow-none"
+                    id="range-filter"
+                    name="range-filter"
+                    data-action="change->filter#filterByRange"
+                    aria-label="Range"
+            >
+                <option value="" selected>Any</option>
+                {% for range in ranges %}
+                    <option value="{{ range.name|lower }}">{{ range.name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+    </div>
 </div>
