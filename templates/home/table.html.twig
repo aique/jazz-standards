@@ -2,7 +2,6 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Genres</th>
             <th>Form</th>
             <th data-controller="order">Tempo
                 <a data-action="click->order#order"
@@ -20,6 +19,7 @@
             </th>
             <th>Play along</th>
             <th>Tabs</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -34,7 +34,6 @@
                         <i class="bi-info-circle"></i>
                     </a>
                 </td>
-                <td>{{ standard.genres|join(' / ') }}</td>
                 <td>{{ standard.form }}</td>
                 <td>{{ standard.tempo }}</td>
                 <td>
@@ -45,6 +44,14 @@
                 <td>
                     <a class="tab-link" href="{{ tab_href(standard.name) }}" target="_blank">
                         <i class="bi-music-note-beamed"></i>
+                    </a>
+                </td>
+                <td data-controller="actions">
+                    <a class="favorite-action"
+                       href="#"
+                       data-action="click->actions#fav"
+                    >
+                        <i class="bi-star"></i>
                     </a>
                 </td>
             </tr>

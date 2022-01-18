@@ -1,3 +1,19 @@
+/************
+TABS
+*************/
+
+.main-tabs {
+  margin-bottom: 2rem;
+
+  .nav-link {
+    color: $base-color;
+  }
+
+  .nav-link.active {
+    background-color: $secondary-color;
+  }
+}
+
 /***********
 TABLE ROWS
 ************/
@@ -19,6 +35,19 @@ TABLE ROWS
 .info-link:hover {
   i.bi-info-circle:before {
     content: "\f430";
+  }
+}
+
+.favorite-action {
+  i {
+    color: $base-color;
+  }
+}
+
+.favorite-action:hover, .favorite-action.active {
+  i.bi-star:before {
+    content: "\f586";
+    color: #ffe234;
   }
 }
 
