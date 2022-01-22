@@ -1,9 +1,10 @@
 import $ from 'jquery';
 import { Controller } from '@hotwired/stimulus';
+import { TableService } from "../services/table_service";
 
 export default class extends Controller {
     search() {
-        this.doSearch(
+        TableService.doSearch(
             'data-name',
             this.getSearchValue()
         );
@@ -17,59 +18,17 @@ export default class extends Controller {
     }
 
     filterByRange() {
-        this.doFilter(
+        TableService.doFilter(
             'data-range',
             $(event.currentTarget).children('option:selected').val()
         );
     }
 
     filterByGenre() {
-        this.doSearch(
+        TableService.doSearch(
             'data-genres',
             $(event.currentTarget).children('option:selected').val()
         );
-    }
-
-    doSearch(attrName, value) {
-        let rows = $('.main-table tbody tr');
-
-        if (value === '') {
-            this.showAll(rows);
-            return;
-        }
-
-        for (let i = 0 ; i < rows.length ; i++) {
-            const current = $(rows[i]);
-            current.hide();
-
-            if (current.attr(attrName).includes(value)) {
-                current.show();
-            }
-        }
-    }
-
-    doFilter(attrName, value) {
-        let rows = $('.main-table tbody tr');
-
-        if (value === '') {
-            this.showAll(rows);
-            return;
-        }
-
-        for (let i = 0 ; i < rows.length ; i++) {
-            const current = $(rows[i]);
-            current.hide();
-
-            if (current.attr(attrName) === value) {
-                current.show();
-            }
-        }
-    }
-
-    showAll(rows) {
-        for (let i = 0 ; i < rows.length ; i++) {
-            $(rows[i]).show();
-        }
     }
 
     showClearIcon(event) {

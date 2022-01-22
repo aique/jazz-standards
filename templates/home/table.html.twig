@@ -46,10 +46,11 @@
                         <i class="bi-music-note-beamed"></i>
                     </a>
                 </td>
-                <td data-controller="actions">
+                <td data-controller="actions--favorites">
                     <a class="favorite-action"
                        href="#"
-                       data-action="click->actions#fav"
+                       data-action="click->actions--favorites#toggle"
+                       data-standard-id="{{ standard.id }}"
                     >
                         <i class="bi-star"></i>
                     </a>
