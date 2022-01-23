@@ -1,20 +1,15 @@
 import $ from 'jquery';
-import Cookies from 'js-cookie'
 import { Controller } from '@hotwired/stimulus';
-import { TableService } from "../../services/table_service";
-
-const fav_cookie_name = 'jazz-strs-favs';
+import { StandardsTable } from "../../services/standards_table";
+import {FavoritesCookie} from "../../services/favorites_cookie";
 
 export default class extends Controller {
     initialize() {
         const element = $(this.element);
         const icon = element.find('.favorite-action');
         const currentStandardId = icon.data('standard-id');
-        const favorites = Cookies.get(fav_cookie_name).split(';');
 
-        const index = favorites.indexOf(currentStandardId.toString());
-
-        if (index > -1) {
+        if (FavoritesCookie.has(currentStandardId)) {
             icon.addClass('active');
         }
     }
@@ -30,40 +25,34 @@ export default class extends Controller {
     }
 
     removeFromFavorites(icon) {
-        const currentStandardId = icon.data('standard-id');
-        const prevCookieValue = Cookies.get(fav_cookie_name);
-
         icon.removeClass('active')
-        const favorites = prevCookieValue.split(';');
+
+        const currentStandardId = icon.data('standard-id');;
+        const favorites = FavoritesCookie.getFavorites();
         const index = favorites.indexOf(currentStandardId.toString());
 
         if (index > -1) {
             favorites.splice(index, 1);
         }
 
-        Cookies.set(fav_cookie_name, favorites.join(';'));
+        FavoritesCookie.setFavorites(favorites)
 
         if ($('.main-tabs .nav-link.active').data('filter') === 'favorites') {
             icon.closest('tr').hide();
         }
 
-        if (TableService.isEmpty()) {
-            TableService.showEmptyFavoritesMessage();
+        if (StandardsTable.isEmpty()) {
+            StandardsTable.showTableMessageAndHideFilters(StandardsTable.empty_favorites_message);
         }
     }
 
     addToFavorites(icon) {
-        const currentStandardId = icon.data('standard-id');
-        const prevCookieValue = Cookies.get(fav_cookie_name);
-
         icon.addClass('active');
 
-        let newValue = prevCookieValue + ';' + currentStandardId;
+        const currentStandardId = icon.data('standard-id');
+        const favorites = FavoritesCookie.getFavorites();
 
-        if (prevCookieValue == undefined || prevCookieValue == '') {
-            newValue = currentStandardId;
-        }
-
-        Cookies.set(fav_cookie_name, newValue);
+        favorites.push(currentStandardId);
+        FavoritesCookie.setFavorites(favorites);
     }
 }

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { Controller } from '@hotwired/stimulus';
-import { TableService } from "../services/table_service";
+import { StandardsTable } from "../services/standards_table";
 
 export default class extends Controller {
     update(event) {
@@ -13,7 +13,7 @@ export default class extends Controller {
         this.removeCurrentActiveTab(tab.closest('.main-tabs'));
         tab.addClass('active');
 
-        let rows = $('.main-table tbody tr');
+        let rows = StandardsTable.getRows();
 
         if (tab.data('filter') === 'favorites') {
             this.filterByFavorites(rows);
@@ -40,16 +40,12 @@ export default class extends Controller {
         }
 
         if (emptyFavorites) {
-            TableService.showEmptyFavoritesMessage();
+            StandardsTable.showTableMessageAndHideFilters(StandardsTable.empty_favorites_message);
         }
     }
 
     clearFilters(rows) {
-        for (let i = 0 ; i < rows.length ; i++) {
-            const current = $(rows[i]);
-            current.show();
-        }
-
-        TableService.showMainTable();
+        StandardsTable.showAll(rows)
+        StandardsTable.showMainTable();
     }
 }

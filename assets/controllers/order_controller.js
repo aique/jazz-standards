@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { Controller } from '@hotwired/stimulus';
+import {StandardsTable} from "../services/standards_table";
 
 let initialRows = [];
 
@@ -20,28 +21,20 @@ export default class extends Controller {
         this.setActive(filter);
     }
 
-    getRows() {
-        return $('.main-table tbody tr');
-    }
-
-    setRows(rows) {
-        $('.main-table tbody').html(rows);
-    }
-
     setInitialState() {
         if (initialRows.length == 0) {
-            initialRows = this.getRows();
+            initialRows = StandardsTable.getRows();
         }
     }
 
     reset(filter) {
-        this.setRows(initialRows);
+        StandardsTable.setRows(initialRows);
         filter.removeClass('active');
     }
 
     sortRows(order) {
         let sorted = false;
-        let rows = this.getRows();
+        let rows = StandardsTable.getRows();
 
         while(!sorted) {
             sorted = true;
@@ -52,7 +45,7 @@ export default class extends Controller {
 
                 if (this.sortNeeded(order, current, next)) {
                     current.insertAfter(next);
-                    rows = this.getRows();
+                    rows = StandardsTable.getRows();
                     sorted = false;
                 }
             }

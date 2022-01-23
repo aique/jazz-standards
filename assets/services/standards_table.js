@@ -1,12 +1,19 @@
 import $ from "jquery";
 
-export class TableService {
+export class StandardsTable {
+    static no_results_message = 'No results found';
+    static empty_favorites_message = 'Your favorites list is empty';
+
     static getRows() {
         return $('.main-table tbody tr');
     }
 
+    static setRows(rows) {
+        $('.main-table tbody').html(rows);
+    }
+
     static isEmpty() {
-        let rows = TableService.getRows();
+        let rows = StandardsTable.getRows();
 
         for (let i = 0 ; i < rows.length ; i++) {
             const current = $(rows[i]);
@@ -21,19 +28,28 @@ export class TableService {
 
     static showMainTable() {
         $('.main-table').removeClass('visually-hidden');
-        $('.empty-favorites-message').addClass('visually-hidden');
+        $('.filters').removeClass('visually-hidden');
+        $('.table-message').addClass('visually-hidden');
     }
 
-    static showEmptyFavoritesMessage() {
+    static showTableMessage(message) {
         $('.main-table').addClass('visually-hidden');
-        $('.empty-favorites-message').removeClass('visually-hidden');
+
+        $('.table-message')
+            .html(message)
+            .removeClass('visually-hidden');
+    }
+
+    static showTableMessageAndHideFilters(message) {
+        StandardsTable.showTableMessage(message);
+        $('.filters').addClass('visually-hidden');
     }
 
     static doSearch(attrName, value) {
-        let rows = TableService.getRows();
+        let rows = StandardsTable.getRows();
 
         if (value === '') {
-            TableService.showAll(rows);
+            StandardsTable.showAll(rows);
             return;
         }
 
@@ -45,13 +61,17 @@ export class TableService {
                 current.show();
             }
         }
+
+        if (StandardsTable.isEmpty()) {
+            StandardsTable.showTableMessage(StandardsTable.no_results_message);
+        }
     }
 
     static doFilter(attrName, value) {
-        let rows = TableService.getRows();
+        let rows = StandardsTable.getRows();
 
         if (value === '') {
-            TableService.showAll(rows);
+            StandardsTable.showAll(rows);
             return;
         }
 
@@ -63,11 +83,17 @@ export class TableService {
                 current.show();
             }
         }
+
+        if (StandardsTable.isEmpty()) {
+            StandardsTable.showTableMessage(StandardsTable.no_results_message);
+        }
     }
 
     static showAll(rows) {
         for (let i = 0 ; i < rows.length ; i++) {
             $(rows[i]).show();
         }
+
+        StandardsTable.showMainTable();
     }
 }

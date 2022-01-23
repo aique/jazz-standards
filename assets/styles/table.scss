@@ -1,6 +1,6 @@
-/************
+/***
 TABS
-*************/
+****/
 
 .main-tabs {
   margin-bottom: 2rem;
@@ -14,9 +14,9 @@ TABS
   }
 }
 
-/***********
+/*********
 TABLE ROWS
-************/
+**********/
 
 .spotify-track, .spotify-track:hover {
   color: $spotify-color;
@@ -100,4 +100,12 @@ TABLE SORTS
   i.bi-arrow-up-circle::before {
     content: "\f139";
   }
+}
+
+/*************
+TABLE MESSAGES
+**************/
+
+.table-message {
+  text-align: center;
 }

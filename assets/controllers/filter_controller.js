@@ -1,12 +1,17 @@
 import $ from 'jquery';
 import { Controller } from '@hotwired/stimulus';
-import { TableService } from "../services/table_service";
+import { StandardsTable } from "../services/standards_table";
 
 export default class extends Controller {
     search() {
-        TableService.doSearch(
-            'data-name',
-            this.getSearchValue()
+        const search = this.getSearchValue()
+
+        if (search === '') {
+            return;
+        }
+
+        StandardsTable.doSearch(
+            'data-name', search
         );
     }
 
@@ -18,14 +23,14 @@ export default class extends Controller {
     }
 
     filterByRange() {
-        TableService.doFilter(
+        StandardsTable.doFilter(
             'data-range',
             $(event.currentTarget).children('option:selected').val()
         );
     }
 
     filterByGenre() {
-        TableService.doSearch(
+        StandardsTable.doSearch(
             'data-genres',
             $(event.currentTarget).children('option:selected').val()
         );
